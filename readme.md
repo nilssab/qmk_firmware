@@ -1,12 +1,15 @@
-#Fork Explanation (under coinstruction)
+#Fork Explanation (under construction)
 This is a fork of the Quantum Mechanical Keyboard Firmware, the original readme.md is kept below.
 I made this fork so I can play around freely with the code, without bothering people that do actual valuable work on it. 
 Also, this is my first time even using git, and I'm not at all familiar with doing anything like this, so if I fail to attribute something correctly, or if I'm doing anything wrong, please tell me. 
 
-The goals (not sure if even possible)
-2. QMK is assuming an english qwerty  
-3. 
 
+Goals: (not even sure if they are possible)
+
+1. Support for many different languages at the same time
+2. No(or as little as possible) dependance on PC setup(QMK is assuming an english qwerty keyboard) 
+
+Since I have no idea of how to accomplish this, this little project will probably be stale for at least a year or so while I investigate how qmk works at a lower scale when I have time. *Expect no progress here for quite some time.* :) 
 
 
 
