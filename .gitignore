@@ -18,6 +18,7 @@ build/
 *.bak
 .vagrant/
 quantum/version.h
+keyboards/preonic/keymaps/nisse-default/keyphrase.h
 .idea/
 CMakeLists.txt
 .DS_STORE
