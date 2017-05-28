@@ -99,20 +99,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |T(TAB)| M-<  | PGUP |  UP  | PGDN | M->  |  +   |   7  |   8  |  9   |  0   | Bksp |
+ * |T(TAB)| M-<  | PGUP |  UP  | PGDN | M->  |  +   |   7  |   8  |  9   |  .   | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      | HOME | LEFT | DOWN |RIGHT | END  |  -   |   4  |   5  |  6   |  .   |Enter |
+ * |      | HOME | LEFT | DOWN |RIGHT | END  |  -   |   4  |   5  |  6   |  0   |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |  _   |   |  |  ~   |  0   |   1  |   2  |  3   |  ,   | Del  |
+ * |      |      |      |      |  |   |  =   |  _   |   1  |   2  |  3   |  ,   | Del  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      | Next |      | PGDN | Play |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = {
   {KC_TILD, KC_EXLM,    KC_AT,   KC_HASH, KC_DLR,   KC_PERC, KC_CIRC,     KC_AMPR, KC_ASTR,KC_LPRN, KC_RPRN, KC_BSPC},
-  {_______,LALT(S(KC_COMM)),KC_PGUP,KC_UP,KC_PGDN,LALT(S(KC_DOT)),KC_PLUS,KC_7,    KC_8,   KC_9,    KC_0,    KC_BSPC},
-  {_______, KC_HOME,    KC_LEFT, KC_DOWN, KC_RIGHT, KC_END,  KC_MINS,     KC_4,    KC_5,   KC_6,    KC_DOT,  KC_ENTER},
-  {_______,_______,     _______, KC_UNDS, KC_PIPE,  KC_TILD, KC_0,        KC_1,    KC_2,   KC_3,    KC_COMM, KC_DEL},
+  {_______,LALT(S(KC_COMM)),KC_PGUP,KC_UP,KC_PGDN,LALT(S(KC_DOT)),KC_PLUS,KC_7,    KC_8,   KC_9,    KC_DOT,  KC_BSPC},
+  {_______, KC_HOME,    KC_LEFT, KC_DOWN, KC_RIGHT, KC_END,  KC_MINS,     KC_4,    KC_5,   KC_6,    KC_0,    KC_ENTER},
+  {_______,_______,     _______, KC_UNDS, KC_PIPE,  KC_EQL,  KC_UNDS,     KC_1,    KC_2,   KC_3,    KC_COMM, KC_DEL},
   {_______, _______,    _______, _______, _______, _______, _______, _______, _______, KC_PGUP, KC_PGDN, KC_MPLY}
 },
 
