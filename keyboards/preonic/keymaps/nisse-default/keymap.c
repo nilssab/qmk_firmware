@@ -101,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |      | M-<  | PGUP |  UP  | PGDN | M->  |  +   |   7  |   8  |  9   |   .  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | CAPS | HOME | LEFT | DOWN |RIGHT | END  |  -   |   4  |   5  |  6   |   0  |Enter |
+ * | Esc  | HOME | LEFT | DOWN |RIGHT | END  |  -   |   4  |   5  |  6   |   0  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |  $   |   %  |   @  |  |   |  =   |  _   |   1  |   2  |  3   |   ,  | Del  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -111,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = {
   {KC_TILD, KC_EXLM,    KC_AT,   KC_HASH, KC_DLR,   KC_PERC, KC_CIRC,     KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC},
   {_______,LALT(S(KC_COMM)),KC_PGUP,KC_UP,KC_PGDN,LALT(S(KC_DOT)),KC_PLUS,KC_7,    KC_8,    KC_9,    KC_DOT,  KC_BSPC},
-  {KC_CAPS, KC_HOME,    KC_LEFT, KC_DOWN, KC_RIGHT, KC_END,  KC_MINS,     KC_4,    KC_5,    KC_6,    KC_0,    KC_ENTER},
+  {KC_ESC, KC_HOME,    KC_LEFT, KC_DOWN, KC_RIGHT, KC_END,  KC_MINS,     KC_4,    KC_5,    KC_6,    KC_0,    KC_ENTER},
   {_______, KC_DLR,     KC_PERC, KC_AT,   KC_PIPE,  KC_EQL,  KC_UNDS,     KC_1,    KC_2,    KC_3,    KC_COMM, KC_DEL},
   {_______, _______,    _______, _______, _______,  _______, _______,     _______, _______, KC_MYCM, KC_MAIL, KC_CALC}
 },
@@ -122,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | sTAB |MWhUp |MWhLft| MUp  |MWhRgt|   !  |  \   |   [  |   ]  |  MB1 |  MB2 |  MB3 |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | ESC  |MWhDwn|MLeft |MDown |MRight|   &  |  '   |   (  |   )  |   {  |   }  |  MB4 |
+ * | CAPS |MWhDwn|MLeft |MDown |MRight|   &  |  '   |   (  |   )  |   {  |   }  |  MB4 |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      | BACK |PrScrn|  ^   |  #   |   ~  |  *   |   "  |   ;  |   :  | FWD  |  MB5 |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -133,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_RAISE] = {
   {KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,    KC_F8,    KC_F9,   KC_F10,     KC_F11,    KC_F12},
   {S(KC_TAB),KC_WH_U,KC_WH_L, KC_MS_U, KC_WH_R, KC_EXLM, KC_BSLASH,KC_LBRC,  KC_RBRC, KC_BTN1,    KC_BTN2,   KC_BTN3},
-  {KC_ESC,  KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_AMPR, KC_QUOT,  KC_LPRN,  KC_RPRN, S(KC_LBRC), S(KC_RBRC),KC_BTN4},
+  {KC_CAPS,  KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_AMPR, KC_QUOT,  KC_LPRN,  KC_RPRN, S(KC_LBRC), S(KC_RBRC),KC_BTN4},
   {_______, KC_WBAK, KC_PSCR, KC_CIRC, KC_HASH, KC_TILD, KC_ASTR,  KC_DQUO,  KC_SCLN, S(KC_SCLN), KC_WFWD,   KC_BTN5},
   {_______, _______, _______, _______, _______, _______, _______,  _______,  _______, KC_MPRV,    KC_MNXT,   KC_MPLY}
 },
