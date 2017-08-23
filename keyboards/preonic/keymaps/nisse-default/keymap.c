@@ -165,11 +165,11 @@ Main idea is to increase performace with japanese typing
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = {
-  {KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, KC_F12},
-  {_______, RESET,   _______, BACKLIT, QWERTY,  DVORAK,  COLEMAK, KC_F9,   KC_F10,  KC_F11,  KC_F12, KC_VOLU},
-  {_______, PASS1,   _______, AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, KC_F5,   KC_F6,   KC_F7,   KC_F8,  KC_VOLD},
-  {_______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  KC_F1,   KC_F2,   KC_F3,   KC_F4,  KC_MUTE},
-  {_______, _______, _______, _______, _______, _______, _______, _______, _______, KC_ACL0, KC_ACL1,KC_ACL2}
+  {KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12},
+  {_______, RESET,   _______, BACKLIT, QWERTY,  DVORAK,  COLEMAK, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_VOLU},
+  {_______, PASS1,   _______, AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_VOLD},
+  {_______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_MUTE},
+  {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
 }
 };
 
