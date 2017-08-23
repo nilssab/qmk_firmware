@@ -11,8 +11,8 @@
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 #define _QWERTY 0
-#define _COLEMAK 1
-#define _DVORAK 2
+#define _GAME 1  // A game layer, keypad+F keys etc
+#define _NISSE 2                                      
 #define _LOWER 3
 #define _RAISE 4
 #define _ADJUST 16
@@ -53,7 +53,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {KC_LCTL, KC_LALT, KC_LGUI, KC_RALT, LOWER,   KC_SPC,  KC_SPC,  RAISE, KC_LCTRL,KC_LGUI,  KC_LALT, KC_RSFT}
 },
 
-/* Colemak
+/* GAME mode
+notes:
+1. WASD moved to ESDF, to have hand on home row center position
+
  * ,-----------------------------------------------------------------------------------.
  * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -66,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | Ctrlx| Altx | GUIx | Raise|Lower |    Space    | Ctrl |  ALT | Left | Down |Right |
  * `-----------------------------------------------------------------------------------'
  */
-[_COLEMAK] = {
+[_GAME] = {
   {KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC},
   {KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_DEL},
   {KC_ESC,  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT},
@@ -74,20 +77,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {KC_LCTL, KC_LGUI, KC_LALT, KC_LCTL, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LGUI, KC_LEFT, KC_DOWN, KC_RGHT}
 },
 
-/* Dvorak
+/* NISSE layout
+notes:
+Main idea is to increase performace with japanese typing
+1. Minimizes use of the 2 center columns 
+    1a. non-alphabet characters moved to center
+    1b. consonants not used in japan roman alphabet typing (qcvxjl) is moved to center (also see 2a)
+    1c. "dfjk" columns are most preferred
+2. Moves aiueo to one side, to greatly increase performance with Japanese typing
+    (japanese written in the roman alphabet is almost always alternating consonants and vocals)
+    2a. tries to move the non-used and least used consonants to the side with the aiueo keys
+    2b. 
  * ,-----------------------------------------------------------------------------------.
  * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Tab  |   '  |   ,  |   .  |   P  |   Y  |   F  |   G  |   C  |   R  |   L  | Del  |
+ * | Tab  |   ,  |   .  |      |      |   Q  |   X  |   G  |   C  |   R  |   L  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   A  |   O  |   E  |   U  |   I  |   D  |   H  |   T  |   N  |   S  |  /   |
+ * | Esc  |   A  |   I  |   U  |   E  |   O  |   .  |   K  |   S  |   T  |   H  | Enter|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift|   ;  |   Q  |   J  |   K  |   X  |   B  |   M  |   W  |   V  |   Z  |Enter |
+ * | Shift|      |      |   C  |   V  |   ;  |   /  |   G  |   Z  |   D  |   Z  | Del  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Ctrlx| Altx | GUIx | Raise|Lower |    Space    | Ctrl |  ALT | Left | Down |Right |
  * `-----------------------------------------------------------------------------------'
  */
-[_DVORAK] = {
+[_NISSE] = {
   {KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC},
   {KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_DEL},
   {KC_ESC,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_SLSH},
