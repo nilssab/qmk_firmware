@@ -12,7 +12,7 @@
 // entirely and just use numbers.
 #define _QWERTY 0
 #define _GAME 1  // A game layer, keypad+F keys etc
-#define _NISSE 2                                      
+#define _UTIL 2                                      
 #define _LOWER 3
 #define _RAISE 4
 #define _ADJUST 16
@@ -20,7 +20,7 @@
 enum preonic_keycodes {
   QWERTY = SAFE_RANGE,
   GAME,
-  NISSE,
+  UTIL,
   LOWER,
   RAISE,
   BACKLIT
@@ -60,13 +60,13 @@ notes:
  * ,-----------------------------------------------------------------------------------.
  * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Tab  |   Q  |   R  |   W  |   E  |   T  |   J  |   L  |   U  |   Y  |   ;  | Del  |
+ * | Tab  |   Q  |   R  |   W  |   E  |   T  |      |      |  Up  |      |   ;  | Del  |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |  Grv |   F  |   A  |   S  |   D  |   G  |   H  |   N  |   E  |   I  |   O  |  "   |
+ * |  Grv |   F  |   A  |   S  |   D  |   G  |      | left | down |right |   O  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Enter |
+ * | Shift|   Z  |   X  |   C  |   V  |   B  |      |      |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrlx| Altx | GUIx | Raise|Lower |    Space    | Ctrl |  ALT | Left | Down |Right |
+ * | Ctrl |  Alt | Ctrl | RAlt |Lower |    Space    | Raise| Ctrl | LAlt |  GUI | Del  |
  * `-----------------------------------------------------------------------------------'
  */
 [_GAME] = {
@@ -74,39 +74,37 @@ notes:
   {KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_DEL},
   {KC_ESC,  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT},
   {KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT},
-  {KC_LCTL, KC_LGUI, KC_LALT, KC_LCTL, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LGUI, KC_LEFT, KC_DOWN, KC_RGHT}
+  {KC_LCTL, KC_LGUI, KC_LCTL, KC_RALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LCTL, KC_LALT, KC_LGUI, KC_DEL}
 },
 
-/* NISSE layout
+/* UTIL layout
 notes:
-Main idea is to increase performace with japanese typing
-1. Minimizes use of the 2 center columns 
-    1a. non-alphabet characters moved to center
-    1b. consonants not used in japan roman alphabet typing (qcvxjl) is moved to center (also see 2a)
-    1c. "dfjk" columns are most preferred
-2. Moves aiueo to one side, to greatly increase performance with Japanese typing
-    (japanese written in the roman alphabet is almost always alternating consonants and vocals)
-    2a. tries to move the non-used and least used consonants to the side with the aiueo keys
-    2b. 
+Utility layer
+made for one handed input of numbers, cursor movement and copy and pasting easier etc.
+(basically the lower layer but permanent)
+
+/* UTIL layer
  * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Tab  |   ,  |   .  |      |      |   Q  |   X  |   G  |   C  |   R  |   L  | Bksp |
+ * |aPrtSc| Cut  | Copy | Paste|      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc  |   A  |   I  |   U  |   E  |   O  |   .  |   K  |   S  |   T  |   H  | Enter|
+ * |      | M-<  | PGUP |  UP  | PGDN | M->  |   ^  |   7  |   8  |  9   |   ,  |      |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * | Esc  | HOME | LEFT | DOWN |RIGHT | END  |   %  |   4  |   5  |  6   |   0  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Shift|      |      |   C  |   V  |   ;  |   /  |   G  |   Z  |   D  |   Z  | Del  |
+ * |      |  /   |   *  |   +  |  -   |  =   |   $  |   1  |   2  |  3   |   .  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrlx| Altx | GUIx | Raise|Lower |    Space    | Ctrl |  ALT | Left | Down |Right |
+ * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
-[_NISSE] = {
-  {KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC},
-  {KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_DEL},
-  {KC_ESC,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_SLSH},
-  {KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_ENT},
-  {KC_LCTL, KC_LGUI, KC_LALT, KC_LCTL, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LGUI, KC_LEFT, KC_DOWN, KC_RGHT}
+
+[_UTIL] = {
+  {KC_TILD, KC_EXLM,    KC_AT,   KC_HASH, KC_DLR,   KC_PERC, KC_CIRC,     KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC},
+  {_______,LALT(S(KC_COMM)),KC_PGUP,KC_UP,KC_PGDN,LALT(S(KC_DOT)),KC_CIRC,KC_7,    KC_8,    KC_9,    KC_COMM, _______},
+  {KC_ESC, KC_HOME,     KC_LEFT, KC_DOWN, KC_RIGHT, KC_END,  KC_PERC,     KC_4,    KC_5,    KC_6,    KC_0,    _______},
+  {_______, KC_SLSH,    KC_ASTR, KC_PLUS, KC_MINS,  KC_EQL,  KC_DLR,      KC_1,    KC_2,    KC_3,    KC_DOT,  _______},
+  {_______, _______,    _______, _______, _______,  _______, _______,     _______, _______, _______, _______, _______}
 },
+
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
@@ -159,7 +157,7 @@ Main idea is to increase performace with japanese typing
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |Au ON |PASSW1|      |      |      |QWERTY|      |  F5  |  F6  |  F7  |  F8  | Vol- |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      | GAME |NISSE |  F1  |  F2  |  F3  |  F4  | Mute |
+ * |      |      |      |      |      | GAME |UTIL |  F1  |  F2  |  F3  |  F4  | Mute |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
@@ -168,7 +166,7 @@ Main idea is to increase performace with japanese typing
   {MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12},
   {AU_OFF,  RESET,   _______, BACKLIT, _______, _______, _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_VOLU},
   {AU_ON,   PASS1,   _______, _______, _______, QWERTY,  _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_VOLD},
-  {_______, _______, _______, _______, _______, GAME,    NISSE,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_MUTE},
+  {_______, _______, _______, _______, _______, GAME,    UTIL,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_MUTE},
   {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
 }
 };
@@ -215,12 +213,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
           return false;
           break;
-        case NISSE:
+        case UTIL:
           if (record->event.pressed) {
             #ifdef AUDIO_ENABLE
               PLAY_NOTE_ARRAY(tone_dvorak, false, 0);
             #endif
-            persistant_default_layer_set(1UL<<_NISSE);
+            persistant_default_layer_set(1UL<<_UTIL);
           }
           return false;
           break;
@@ -291,3 +289,28 @@ void music_scale_user(void)
 }
 
 #endif
+
+/*
+**OLD notes for Japanese input layer**
+Main idea is to increase performace with japanese typing
+1. Minimizes use of the 2 center columns 
+    1a. non-alphabet characters moved to center
+    1b. consonants not used in japan roman alphabet typing (qcvxjl) are moved to center (also see 2a)
+    1c. "dfjk" columns are most preferred
+2. Moves aiueo to one side, to greatly increase performance with Japanese typing
+    (japanese written in the roman alphabet is almost always alternating consonants and vocals)
+    2a. tries to move the non-used and least used consonants to the side with the aiueo keys
+    2b. 
+ * ,-----------------------------------------------------------------------------------.
+ * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Tab  |      |      |      |      |   ;  |   /  |   G  |   C  |   R  |   L  | Bksp |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * | Esc  |   A  |   I  |   U  |   E  |      |      |      |   S  |   T  |   H  | Enter|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Shift|      |      |   C  |   V  |   ,  |   .  |   G  |   Z  |   D  |   Z  | Del  |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Ctrlx| Altx | GUIx | Raise|Lower |    Space    | Ctrl |  ALT | Left | Down |Right |
+ * `-----------------------------------------------------------------------------------'
+**OLD notes for Japanese input layer**
+ */
