@@ -19,7 +19,7 @@ extern keymap_config_t keymap_config;
 #define _LOWER 3
 #define _RAISE 4
 #define _PLOVER 5
-#define _ADJUST 16
+#define _ADJUST 6
 
 enum planck_keycodes {
   QWERTY = SAFE_RANGE,
@@ -30,6 +30,7 @@ enum planck_keycodes {
   RAISE,
   BACKLIT,
   EXT_PLV,
+  ADJUST_,
   LOWER__,
   RAISE__
 };
@@ -126,17 +127,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |Au OFF| Reset|      |BLight|      |      |      |  F9  |  F10 |  F11 |  F12 | Vol+ |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |Au ON | LGUI |LSHIFT| LCTRL| LALT |      |      |  F5  |  F6  |  F7  |  F8  | Vol- |
+ * |Au ON | LGUI |LSHIFT| LCTRL| LALT |QWERTY|Adjust|  F5  |  F6  |  F7  |  F8  | Vol- |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |QWERTY| Lower|Raise |  F1  |  F2  |  F3  |  F4  | Mute |
+ * |      |      |      |      |      | Lower|Raise |  F1  |  F2  |  F3  |  F4  | Mute |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = {
   {AU_OFF,  RESET,   _______, BACKLIT, _______, _______, _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_VOLU},
-  {AU_ON,   KC_LGUI, KC_LSFT, KC_LCTL, KC_LALT, _______, _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_VOLD},
-  {_______, _______, _______, _______, QWERTY,  LOWER__, RAISE__, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_MUTE},
+  {AU_ON,   KC_LGUI, KC_LSFT, KC_LCTL, KC_LALT, QWERTY,  ADJUST_, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_VOLD},
+  {_______, _______, _______, _______, _______, LOWER__, RAISE__, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_MUTE},
   {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
 }
 
@@ -172,24 +173,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case COLEMAK:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_NOTE_ARRAY(tone_colemak, false, 0);
-        #endif
-        persistant_default_layer_set(1UL<<_COLEMAK);
-      }
-      return false;
-      break;
-    case DVORAK:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_NOTE_ARRAY(tone_dvorak, false, 0);
-        #endif
-        persistant_default_layer_set(1UL<<_DVORAK);
-      }
-      return false;
-      break;
     case RAISE__:
       if (record->event.pressed) {
         #ifdef AUDIO_ENABLE
@@ -205,6 +188,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           PLAY_NOTE_ARRAY(tone_dvorak, false, 0);
         #endif
         persistant_default_layer_set(1UL<<_LOWER);
+      }
+      return false;
+      break;
+    case ADJUST_:
+      if (record->event.pressed) {
+        #ifdef AUDIO_ENABLE
+          PLAY_NOTE_ARRAY(tone_dvorak, false, 0);
+        #endif
+        persistant_default_layer_set(1UL<<_ADJUST);
       }
       return false;
       break;
