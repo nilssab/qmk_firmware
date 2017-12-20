@@ -19,8 +19,8 @@
 
 enum preonic_keycodes {
   QWERTY = SAFE_RANGE,
-  GAME,
-  UTIL,
+  LOWER_,
+  RAISE_,
   LOWER,
   RAISE,
   BACKLIT
@@ -166,7 +166,7 @@ made for one handed input of numbers, cursor movement and copy and pasting easie
   {MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12},
   {AU_OFF,  RESET,   _______, BACKLIT, _______, _______, _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_VOLU},
   {AU_ON,   KC_LGUI, KC_LSFT, KC_LCTL, KC_LALT, QWERTY,  _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_VOLD},
-  {_______, _______, _______, _______, _______, GAME,    UTIL,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_MUTE},
+  {_______, _______, _______, _______, _______, LOWER_,  RAISE_,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_MUTE},
   {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
 }
 };
@@ -204,21 +204,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
           return false;
           break;
-        case GAME:
+        case LOWER_:
           if (record->event.pressed) {
             #ifdef AUDIO_ENABLE
               PLAY_NOTE_ARRAY(tone_colemak, false, 0);
             #endif
-            persistant_default_layer_set(1UL<<_GAME);
+            persistant_default_layer_set(1UL<<_LOWER);
           }
           return false;
           break;
-        case UTIL:
+        case RAISE_:
           if (record->event.pressed) {
             #ifdef AUDIO_ENABLE
               PLAY_NOTE_ARRAY(tone_dvorak, false, 0);
             #endif
-            persistant_default_layer_set(1UL<<_UTIL);
+            persistant_default_layer_set(1UL<<_RAISE);
           }
           return false;
           break;
