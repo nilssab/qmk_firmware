@@ -119,6 +119,19 @@ made for one handed input of numbers, cursor movement and copy and pasting easie
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
+ /* Lower WIP
+ * ,-----------------------------------------------------------------------------------.
+ * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Bksp |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |      |   ,  |   7  |   8  |   9  |   ^  |      | PGUP |  Up  | PGDN |      |      |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * | Esc  |   0  |   4  |   5  |   6  |   %  | HOME | Left | Down | Right| END  |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |   .  |   1  |   2  |   3  |   $  |   =  |   -  |   +  |   *  |   /  |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |             |      |      |      |      |      |
+ * `-----------------------------------------------------------------------------------'
+ */
 [_LOWER] = {
   {KC_TILD, KC_EXLM,    KC_AT,   KC_HASH, KC_DLR,   KC_PERC, KC_CIRC,     KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC},
   {_______,LALT(S(KC_COMM)),KC_PGUP,KC_UP,KC_PGDN,LALT(S(KC_DOT)),KC_CIRC,KC_7,    KC_8,    KC_9,    KC_COMM, _______},
@@ -144,7 +157,7 @@ made for one handed input of numbers, cursor movement and copy and pasting easie
 [_RAISE] = {
   {KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,    KC_F8,    KC_F9,   KC_F10,     KC_F11,    KC_F12},
   {S(KC_TAB),KC_WH_U,KC_WH_L, KC_MS_U, KC_WH_R, KC_EXLM, KC_BSLASH,KC_LBRC,  KC_RBRC, KC_BTN1,    KC_BTN2,   KC_BTN3},
-  {KC_CAPS,  KC_WH_D, KC_MS_L,KC_MS_D, KC_MS_R, KC_AMPR, KC_QUOT,  KC_LPRN,  KC_RPRN, S(KC_LBRC), S(KC_RBRC),KC_BTN4},
+  {KC_CAPS, KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_AMPR, KC_QUOT,  KC_LPRN,  KC_RPRN, S(KC_LBRC), S(KC_RBRC),KC_BTN4},
   {_______, KC_WBAK, KC_PSCR, KC_HASH, KC_PIPE, KC_TILD, KC_DQUO,  KC_AT,    KC_SCLN, S(KC_SCLN), KC_WFWD,   KC_BTN5},
   {_______, _______, _______, _______, _______, _______, _______,  _______,  _______, _______,    _______,   _______}
 },
@@ -153,11 +166,11 @@ made for one handed input of numbers, cursor movement and copy and pasting easie
  * ,-----------------------------------------------------------------------------------.
  * |Voice-|Voice+|Mus on|MusOff|  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Au OFF| Reset|      |BLight|      |      |      |  F9  |  F10 |  F11 |  F12 | Vol+ |
+ * |Au OFF| Reset|      |BLight|      |      |  DEL |  F9  |  F10 |  F11 |  F12 | Vol+ |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |Au ON | LGUI |LSHIFT| LCTRL| LALT |QWERTY|      |  F5  |  F6  |  F7  |  F8  | Vol- |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      | GAME | UTIL |  F1  |  F2  |  F3  |  F4  | Mute |
+ * |      |      |      |      |      |PLOWER|PRAISE|  F1  |  F2  |  F3  |  F4  | Mute |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
@@ -165,7 +178,7 @@ made for one handed input of numbers, cursor movement and copy and pasting easie
 [_ADJUST] = {
   {MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12},
   {AU_OFF,  RESET,   _______, BACKLIT, _______, _______, _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_VOLU},
-  {AU_ON,   KC_LGUI, KC_LSFT, KC_LCTL, KC_LALT, QWERTY,  _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_VOLD},
+  {AU_ON,   KC_LGUI, KC_LSFT, KC_LCTL, KC_LALT, QWERTY,  KC_DEL,  KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_VOLD},
   {_______, _______, _______, _______, _______, LOWER_,  RAISE_,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_MUTE},
   {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
 }
