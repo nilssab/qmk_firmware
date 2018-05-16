@@ -23,6 +23,7 @@ enum preonic_keycodes {
   RAISE_,
   LOWER,
   RAISE,
+  ADJUST_,
   BACKLIT
 };
 
@@ -200,7 +201,7 @@ made for one handed input of numbers, cursor movement and copy and pasting easie
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = {
-  {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
+  {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______},
   {AU_OFF,  RESET,   _______, BACKLIT, _______, _______, _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______},
   {AU_ON,   KC_LGUI, KC_LSFT, KC_LCTL, KC_LALT, QWERTY,  ADJUST_, KC_F5,   KC_F6,   KC_F7,   KC_F8,   _______},
   {_______, _______, _______, _______, _______, LOWER_ , RAISE_ , KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______},
@@ -256,6 +257,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
               PLAY_NOTE_ARRAY(tone_dvorak, false, 0);
             #endif
             persistant_default_layer_set(1UL<<_RAISE);
+          }
+          return false;
+          break;
+        case ADJUST_:
+          if (record->event.pressed) {
+            #ifdef AUDIO_ENABLE
+              PLAY_NOTE_ARRAY(tone_dvorak, false, 0);
+            #endif
+            persistant_default_layer_set(1UL<<_ADJUST);
           }
           return false;
           break;
