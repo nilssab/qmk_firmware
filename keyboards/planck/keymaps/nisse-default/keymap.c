@@ -31,8 +31,8 @@ enum planck_keycodes {
   BACKLIT,
   EXT_PLV,
   ADJUST_,
-  LOWER__,
-  RAISE__
+  LOWER_,
+  RAISE_
 };
 
 // Fillers to make layering more clear
@@ -107,9 +107,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = {
-  {AU_OFF,  RESET,   _______, BACKLIT, _______, _______, _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_DEL},
+  {AU_OFF,  RESET,   _______, BACKLIT, _______, _______, _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______},
   {AU_ON,   KC_LGUI, KC_LSFT, KC_LCTL, KC_LALT, QWERTY,  ADJUST_, KC_F5,   KC_F6,   KC_F7,   KC_F8,   _______},
-  {_______, _______, _______, _______, _______, LOWER__, RAISE__, KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______},
+  {_______, _______, _______, _______, _______, LOWER_ , RAISE_ , KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______},
   {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
 }
 
@@ -145,7 +145,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case RAISE__:
+    case RAISE_:
       if (record->event.pressed) {
         #ifdef AUDIO_ENABLE
           PLAY_NOTE_ARRAY(tone_colemak, false, 0);
@@ -154,7 +154,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case LOWER__:
+    case LOWER_:
       if (record->event.pressed) {
         #ifdef AUDIO_ENABLE
           PLAY_NOTE_ARRAY(tone_dvorak, false, 0);
