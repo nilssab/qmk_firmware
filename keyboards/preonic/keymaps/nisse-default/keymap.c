@@ -47,11 +47,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = {
-  {KC_ESC,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,  KC_8,    KC_9,    KC_0,    KC_PSCR},
   {S(KC_TAB),KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC},
   {KC_TAB,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,  KC_K,    KC_L,    KC_SLSH, KC_ENT},
   {KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,  KC_COMM, KC_DOT,  KC_UP,   KC_DEL},
-  {KC_LCTL,  KC_LGUI, KC_RALT, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE, KC_RCTL, KC_LEFT, KC_DOWN, KC_RIGHT}
+  {KC_LCTL,  KC_LGUI, KC_RALT, KC_LALT, LOWER,   KC_BSPC, KC_SPC,  RAISE, KC_RCTL, KC_PGUP, KC_UP,   KC_PGDN},
+  {KC_ESC,   KC_PSCR, KC_LGUI, KC_LSFT, RAISE,   KC_LSFT, KC_RSFT, LOWER, KC_RSFT, KC_LEFT, KC_DOWN, KC_RIGHT}
 },
 
 /* GAME mode
@@ -134,11 +134,11 @@ made for one handed input of numbers, cursor movement and copy and pasting easie
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = {
-  {KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,   KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC},
   {KC_BSPC, KC_COMM, KC_7,    KC_8,    KC_9,     KC_CIRC, KC_WFWD, KC_PGUP, KC_UP,   KC_PGDN, KC_WBAK, _______},
   {KC_ENT,  KC_0,    KC_4,    KC_5,    KC_6,     KC_PERC, KC_HOME, KC_LEFT, KC_DOWN, KC_RIGHT,KC_END,  _______},
   {_______, KC_DOT,  KC_1,    KC_2,    KC_3,     KC_DLR,  KC_EQL,  KC_MINS, KC_PLUS, KC_ASTR, KC_SLSH, _______},
-  {_______, _______, _______, _______, _______,  _______, _______, _______, _______, KC_MPRV, KC_MPLY, KC_MNXT}
+  {_______, _______, _______, _______, _______,  _______, _______, _______, _______, KC_MPRV, KC_MPLY, KC_MNXT},
+  {_______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, _______}
 },
 /*OLD [_LOWER] = {
   {KC_TILD, KC_EXLM,    KC_AT,   KC_HASH, KC_DLR,   KC_PERC, KC_CIRC,     KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC},
@@ -173,11 +173,11 @@ made for one handed input of numbers, cursor movement and copy and pasting easie
  * `-----------------------------------------------------------------------------------'
  */ 
 [_RAISE] = {
-  {KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,    KC_F8,    KC_F9,   KC_F10,     KC_F11,    KC_F12},
   {KC_CAPS, KC_WH_U, KC_WH_L, KC_MS_U, KC_WH_R, KC_TILD, KC_GRV,  KC_LBRC, KC_RBRC, KC_BTN1,    KC_BTN2,   KC_BTN3},
   {KC_ESC,  KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_EXLM, KC_QUOT, KC_LPRN, KC_RPRN, S(KC_LBRC), S(KC_RBRC),KC_BTN4},
   {_______, KC_PAUSE,KC_PSCR, KC_HASH, KC_PIPE, KC_AMPR, KC_DQUO, KC_AT,   KC_SCLN, S(KC_SCLN), KC_BSLASH, KC_BTN5},
-  {_______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MUTE,    KC_VOLD,   KC_VOLU}
+  {_______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MUTE,    KC_VOLD,   KC_VOLU},
+  {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______,    _______,   _______}
 },
 /*OLD  [_RAISE] = {
   {KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,    KC_F8,    KC_F9,   KC_F10,     KC_F11,    KC_F12},
@@ -201,10 +201,10 @@ made for one handed input of numbers, cursor movement and copy and pasting easie
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = {
-  {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______},
   {AU_OFF,  RESET,   _______, BACKLIT, _______, _______, _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______},
   {AU_ON,   KC_LGUI, KC_LSFT, KC_LCTL, KC_LALT, QWERTY,  ADJUST_, KC_F5,   KC_F6,   KC_F7,   KC_F8,   _______},
   {_______, _______, _______, _______, _______, LOWER_ , RAISE_ , KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______},
+  {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______},
   {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
 }
 };
