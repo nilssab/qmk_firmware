@@ -35,29 +35,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwerty
  * ,-----------------------------------------------------------------------------------.
- * |  Esc |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |PrScrn|
- * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | sTab |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |  Tab |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |LShift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  UP  | DEL  |
+ * |LShift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  UP  |RShift|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl |  GUI | RAlt | LAlt |Lower |    Space    | Raise| Ctrl | LEFT | DOWN | RIGHT|
+ * | Ctrl |  GUI | AltGr| LAlt |Lower | DEL  | Bksp | Raise| Ctrl | LEFT | DOWN | RIGHT|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | ESC  | PScr | aPScr| LCtrl|Raise |    Space    | Lower| AltGr|      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = {
   {S(KC_TAB),KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC},
   {KC_TAB,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,  KC_K,    KC_L,    KC_SLSH, KC_ENT},
-  {KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,  KC_COMM, KC_DOT,  KC_UP,   KC_DEL},
-  {KC_LCTL,  KC_LGUI, KC_RALT, KC_LALT, LOWER,   KC_BSPC, KC_SPC,  RAISE, KC_RCTL, KC_PGUP, KC_UP,   KC_PGDN},
-  {KC_ESC,   KC_PSCR, KC_LGUI, KC_LSFT, RAISE,   KC_LSFT, KC_RSFT, LOWER, KC_RSFT, KC_LEFT, KC_DOWN, KC_RIGHT}
+  {KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,  KC_COMM, KC_DOT,  KC_UP,   KC_RSFT},
+  {KC_LCTL,  KC_LGUI, KC_RALT, KC_LALT, LOWER,   KC_DEL,  KC_BSPC, RAISE, KC_RCTL, KC_LEFT, KC_DOWN, KC_RIGHT},
+  {KC_ESC,KC_PSCR,LALT(KC_PSCR),KC_LCTL,RAISE,   KC_SPC,  KC_SPC,  LOWER, KC_RALT, KC_PGUP, KC_PGDN, KC_PGDN}
 },
 
 /* GAME mode
 notes:
 1. WASD moved to ESDF, to have hand on home row center position
-
+p
  * ,-----------------------------------------------------------------------------------.
  * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -122,19 +122,19 @@ made for one handed input of numbers, cursor movement and copy and pasting easie
  */
  /* Lower NEW
  * ,-----------------------------------------------------------------------------------.
- * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  |  BS  |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |  BS  |   ,  |   7  |   8  |   9  |   ^  | FWD  | PGUP |  Up  | PGDN | BACK |      |
+ * |  BS  |   ,  |   7  |   8  |   9  |   ^  | BACK | PGUP |  Up  | PGDN | FWD  |      |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |Enter |   0  |   4  |   5  |   6  |   %  | HOME | Left | Down | Right| END  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |   .  |   1  |   2  |   3  |   $  |   =  |   -  |   +  |   *  |   /  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      |      | PREV | PLAY | NEXT |
+ * |      |      |      |      |      |      |      |      |      | PREV | PLAY | NEXT |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = {
-  {KC_BSPC, KC_COMM, KC_7,    KC_8,    KC_9,     KC_CIRC, KC_WFWD, KC_PGUP, KC_UP,   KC_PGDN, KC_WBAK, _______},
+  {KC_BSPC, KC_COMM, KC_7,    KC_8,    KC_9,     KC_CIRC, KC_WBAK, KC_PGUP, KC_UP,   KC_PGDN, KC_WFWD, _______},
   {KC_ENT,  KC_0,    KC_4,    KC_5,    KC_6,     KC_PERC, KC_HOME, KC_LEFT, KC_DOWN, KC_RIGHT,KC_END,  _______},
   {_______, KC_DOT,  KC_1,    KC_2,    KC_3,     KC_DLR,  KC_EQL,  KC_MINS, KC_PLUS, KC_ASTR, KC_SLSH, _______},
   {_______, _______, _______, _______, _______,  _______, _______, _______, _______, KC_MPRV, KC_MPLY, KC_MNXT},
@@ -187,7 +187,7 @@ made for one handed input of numbers, cursor movement and copy and pasting easie
   {_______, _______, _______, _______, _______, _______, _______,  _______,  _______, _______,    _______,   _______}
 },*/
 
-/* Adjust (Lower + Raise)
+/* Adjust (Lower + Raise) 
  * ,-----------------------------------------------------------------------------------.
  * |      |      |      |      |      |             |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
