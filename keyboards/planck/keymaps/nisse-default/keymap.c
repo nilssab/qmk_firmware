@@ -14,7 +14,7 @@ extern keymap_config_t keymap_config;
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 #define _QWERTY 0
-#define _COLEMAK 1
+#define _QWERTYNoShSpc 1
 #define _DVORAK 2
 #define _LOWER 3
 #define _RAISE 4
@@ -23,7 +23,7 @@ extern keymap_config_t keymap_config;
 
 enum planck_keycodes {
   QWERTY = SAFE_RANGE,
-  COLEMAK,
+  QWERTYNoShSpc,
   DVORAK,
   PLOVER,
   LOWER,
@@ -58,7 +58,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {S(KC_TAB),KC_Q,    KC_W,    KC_E,    KC_R,  KC_T,  KC_Y,   KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC},
   {KC_TAB,   KC_A,    KC_S,    KC_D,    KC_F,  KC_G,  KC_H,   KC_J,  KC_K,    KC_L,    KC_SLSH, KC_ENT},
   {KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,  KC_B,  KC_N,   KC_M,  KC_COMM, KC_DOT,  KC_UP,   KC_DEL},
-  {KC_LCTL,  KC_LGUI, KC_RALT, KC_LALT, LOWER, KC_SPC,KC_SPC,  RAISE, KC_RCTL, KC_LEFT, KC_DOWN, KC_RIGHT}
+  {KC_LCTL,  KC_LGUI, KC_RALT, KC_LALT, LOWER, ShSPC, ShSPC,  RAISE, KC_RCTL, KC_LEFT, KC_DOWN, KC_RIGHT}
+},
+[_QWERTYNoShSpc] = {
+  {S(KC_TAB),KC_Q,    KC_W,    KC_E,    KC_R,  KC_T,  KC_Y,   KC_U,  KC_I,    KC_O,    KC_P,    KC_BSPC},
+  {KC_TAB,   KC_A,    KC_S,    KC_D,    KC_F,  KC_G,  KC_H,   KC_J,  KC_K,    KC_L,    KC_SLSH, KC_ENT},
+  {KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,  KC_B,  KC_N,   KC_M,  KC_COMM, KC_DOT,  KC_UP,   KC_DEL},
+  {KC_LCTL,  KC_LGUI, KC_RALT, KC_LALT, LOWER,KC_SPC,KC_SPC,  RAISE, KC_RCTL, KC_LEFT, KC_DOWN, KC_RIGHT}
 },
 
 /* Lower
@@ -103,16 +109,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |Au ON | LGUI |LSHIFT| LCTRL| LALT |QWERTY|Adjust|  F5  |  F6  |  F7  |  F8  | Vol- |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      | Lower|Raise |  F1  |  F2  |  F3  |  F4  | Mute |
+ * |      |      |      |      |      |NoShSpc|Raise|  F1  |  F2  |  F3  |  F4  | Mute |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = {
-  {AU_OFF,  RESET,   _______, BACKLIT, _______, _______, _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______},
-  {AU_ON,   KC_LGUI, KC_LSFT, KC_LCTL, KC_LALT, QWERTY,  ADJUST_, KC_F5,   KC_F6,   KC_F7,   KC_F8,   _______},
-  {_______, _______, _______, _______, _______, LOWER_ , RAISE_ , KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______},
-  {_______, _______, _______, _______, _______, KC_SPC , KC_SPC , _______, _______, _______, _______, _______}
+  {AU_OFF,  RESET,   _______, BACKLIT, _______, _______,       _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______},
+  {AU_ON,   KC_LGUI, KC_LSFT, KC_LCTL, KC_LALT, QWERTY,        ADJUST_, KC_F5,   KC_F6,   KC_F7,   KC_F8,   _______},
+  {_______, _______, _______, _______, _______, QWERTYNoShSpc, RAISE_ , KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______},
+  {_______, _______, _______, _______, _______, KC_SPC ,       KC_SPC , _______, _______, _______, _______, _______}
 }
 
 };
@@ -156,12 +162,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case LOWER_:
+    case QWERTYNoShSpc:
       if (record->event.pressed) {
         #ifdef AUDIO_ENABLE
           PLAY_NOTE_ARRAY(tone_dvorak, false, 0);
         #endif
-        persistant_default_layer_set(1UL<<_LOWER);
+        persistant_default_layer_set(1UL<<_QWERTYNoShSpc);
       }
       return false;
       break;
